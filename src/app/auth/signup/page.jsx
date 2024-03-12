@@ -1,6 +1,6 @@
 "use client"
 import SignUpTeacher from '@/components/SignUpTeacher.jsx';
-// import SignUpStudent from '@/components/SignUpStudent.jsx';
+import SignUpStudent from '@/components/SignupStudents.jsx';
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@nextui-org/react';
