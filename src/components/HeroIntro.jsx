@@ -12,7 +12,7 @@ const HeroIntro = () => {
                 </div>
                 <div className='mt-[3rem] flex gap-[8rem]'>
                     <div className='w-[37rem]'>
-                        <div className=' w-full h-[25rem] rounded-[1.5rem] bg-gradient-to-br from-purple-300 to-violet-800 dark:from-black dark:to-black'>
+                        <div className=' w-full h-[25rem] rounded-[1.5rem] bg-gradient-to-br from-purple-300 to-violet-800 transition hover:duration-2000 hover:from-violet-800 hover:to-purple-300 dark:from-black dark:to-black'>
                             <div className='relative top-6 left-10 w-[90%]'>
                                 <p className='text-white font-semibold text-[2.5rem] '>Empower Your Future. Learn Anything, Anytime.</p>
                                 <p className='text-white font-medium text-[1.2rem] mt-4'>Unleash your potential and explore a world of knowledge at your fingertips</p>

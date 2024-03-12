@@ -79,9 +79,6 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <div key={item.name} className={`w-[25rem] h-[18rem] border-2 border-slate-300 rounded-[1.2rem]`}
-          style={{
-            transform: `rotate(${rotate ? '2deg' : '0'})`
-          }}
           >
 
             <div className=" relative top-6 left-4 w-[90%] flex flex-col" >

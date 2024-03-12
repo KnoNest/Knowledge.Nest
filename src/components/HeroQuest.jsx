@@ -11,7 +11,7 @@ const HeroQuest = () => {
                     <p className='text-[4rem] font-medium bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Question</p>
                 </div>
                 <div className='grid grid-cols-2 mt-[4rem] gap-6'>
-                    <div className='w-[35rem] h-[23rem] border-2 border-gray-300 rounded-[1.5rem]'>
+                    <div className='w-[33rem] h-[22rem] border-2 border-gray-300 rounded-[1.5rem]'>
                         <div className='relative top-6 opacity-75 w-[90%] m-auto'>
                             <p className='font-mdium text-[1.3rem]'>"I've struggled with understanding complex concepts in [Subject] for a while now. While I've tried various study methods like reading textbooks and taking notes, I still feel lost and haven't made significant progress.</p>
                             <div className='mt-[3rem] flex'>
@@ -30,7 +30,7 @@ const HeroQuest = () => {
                     <div className='ml-[4rem] mt-[3rem]'>
                         <CardStack items={CARDS} />
                     </div>
-                    <div className='w-[35rem] h-[23rem] border-2 border-gray-300 rounded-[1.5rem]'>
+                    <div className='w-[33rem] h-[22rem] border-2 border-gray-300 rounded-[1.5rem]'>
                         <div className='relative top-6 opacity-75 w-[90%] m-auto'>
                             <p className='font-mdium text-[1.3rem]'>"I've struggled with understanding complex concepts in [Subject] for a while now. While I've tried various study methods like reading textbooks and taking notes, I still feel lost and haven't made significant progress.</p>
                             <div className='mt-[3rem] flex'>

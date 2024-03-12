@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className=' flex h-full items-center text-gray-300 gap-8'>
                     <div>
 
-                    <Image src="" alt="" />
+                    {/* <Image src="" alt="" /> */}
                     </div>
                     <p className='text-[2.4rem] font-bold'>KNOWLEDGE NEST</p>
                 </div>

@@ -1,14 +1,15 @@
 import React from 'react'
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button, Input } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Input } from "@nextui-org/react";
+import Link from 'next/link';
 
 const NavBar = () => {
     return (
         <>
-        <div className='w-[88rem] m-auto sticky top-0 z-20'>
+        <div className='w-[81rem] m-auto sticky top-0 z-20'>
 
             <Navbar shouldHideOnScroll maxWidth='full' className='rounded-[1.5rem]'>
                 <NavbarBrand className='text-black dark:text-white font-bold text-[1.2rem]'>
-                    <p className="font-bold text-inherit"> KNOWLEDGE NEST</p>
+                    <Link href={"/"} className="font-bold text-inherit"> KNOWLEDGE NEST</Link>
                 </NavbarBrand>
                 <NavbarContent className="hidden sm:flex gap-3 " justify="center">
                     <NavbarItem className='w-[45rem]'>
@@ -24,7 +25,7 @@ const NavBar = () => {
                             <Button as={Link} href='/auth' color='primary' className='w-[6rem]'>Login</Button>
                     </NavbarItem>
                     <NavbarItem>
-                        <Button as={Link} className='bg-black text-white w-[9rem]' href="#">
+                        <Button as={Link} className='bg-black text-white w-[9rem]' href="/tutor-page">
                             Find Tutor
                         </Button>
                     </NavbarItem>

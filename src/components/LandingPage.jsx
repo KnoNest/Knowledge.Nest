@@ -6,7 +6,7 @@ import { TextGenerateEffect } from './ui/text-generate-effect.jsx'
 const LandingPage = () => {
     return (
         <>
-            <div className="w-[91rem] m-auto h-[48rem] rounded-[33px] flex flex-col  items-center bg-gradient-to-br from-purple-300 to-blue-200 dark:from-black dark:to-slate-900">
+            <div className="w-[83rem] m-auto h-[48rem] rounded-[33px] flex flex-col  items-center bg-gradient-to-br from-purple-300 to-blue-200 dark:from-black dark:to-black border-b-1 dark:border-white">
                 <div className='mt-[5rem]'>
                     <p className='font-bold text-[3.3rem] text-white tracking-tighter'>Unlock Your Potential. Find Your Perfect Tutor Today.</p>
                     <div className='w-[69rem] m-auto flex justify-center'>
