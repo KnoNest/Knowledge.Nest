@@ -49,9 +49,6 @@ const teacherSchema = new mongoose.Schema({
     type: Date
   },
   experienceDetails: {
-    skills: [{
-      type: String
-    }],
     yearsOfExperience: {
       type: String
     },
