@@ -13,9 +13,11 @@ body {
   }
 }
 
+
 .landing-page-btn {
   @apply bg-white text-black py-3 px-5 rounded-[1.5rem] shadow-md;
 }
+
 
 /* Width */
 ::-webkit-scrollbar {

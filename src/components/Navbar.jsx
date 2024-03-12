@@ -22,7 +22,7 @@ const NavBar = () => {
                 </NavbarContent>
                 <NavbarContent justify="end" className='flex gap-[3rem]'  >
                     <NavbarItem className="hidden lg:flex">
-                            <Button as={Link} href='/auth' color='primary' className='w-[6rem]'>Login</Button>
+                            <Button as={Link} href='/auth/login' color='primary' className='w-[6rem]'>Login</Button>
                     </NavbarItem>
                     <NavbarItem>
                         <Button as={Link} className='bg-black text-white w-[9rem]' href="/tutor-page">
