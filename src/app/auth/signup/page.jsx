@@ -25,15 +25,15 @@ const Signup = () => {
 
         {isTeacher 
         ? 
-        <div className='flex gap-[8rem]'>
-          <div className='w-[25rem] animate-authmotion delay-1000 h-[25rem] shadow-[1rem_1rem_25rem_1rem_rgb(52,200,128)] rounded-[1.5rem] bg-gradient-to-br from-green-400 to-cyan-300'></div>
+        <div className='flex gap-[8rem] animate-authmotion'>
+          <div className='w-[25rem] animate-authmotion duration-400  delay-1000 h-[25rem] shadow-[1rem_1rem_25rem_1rem_rgb(52,200,128)] rounded-[3.5rem] bg-gradient-to-br from-green-400 to-cyan-300'></div>
 
           <SignUpTeacher /> 
         </div>
 
         : 
-        <div className='flex gap-[8rem]'>
-          <div className='w-[25rem] animate-authmotion delay-1000 h-[25rem] shadow-[1rem_1rem_25rem_1rem_rgb(52,200,128)] rounded-[1.5rem] bg-gradient-to-br from-cyan-400 to-green-300'></div>
+        <div className='flex gap-[8rem] animate-authmotion'>
+          <div className='w-[25rem] animate-authmotion delay-1000 h-[25rem] duration-400 shadow-[1rem_1rem_25rem_1rem_rgb(52,200,128)] rounded-[1.5rem] bg-gradient-to-br from-cyan-400 to-green-300'></div>
           <SignUpStudent />
           </div>
           }

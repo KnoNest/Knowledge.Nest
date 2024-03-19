@@ -13,6 +13,9 @@ body {
   }
 }
 
+.update-input {
+  @apply py-[.5rem] px-[.7rem] w-[18rem] rounded-[.5rem] outline-none border-1 border-white bg-black text-white text-[.8rem]
+}
 
 .landing-page-btn {
   @apply bg-white text-black py-3 px-5 rounded-[1.5rem] shadow-md;
@@ -21,7 +24,7 @@ body {
 
 /* Width */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 4px;
   border-radius: 5px; /* Adjust the value as needed */
 }
 

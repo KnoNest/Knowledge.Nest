@@ -17,14 +17,14 @@ export const PATCH = asyncHandler(async (req, { params }) => {
             avatar, 
             phoneNumber, 
             about, 
-            boards, 
+            board, 
             goals } = await req.json();
 
-        if (![firstName, lastName, username, email, avatar, phoneNumber, about, boards, goals].every(Boolean)) {
-            return NextResponse.json(
-                {message: "no value passed"},
-                {error: 400})
-        }
+        // if (![firstName, lastName, username, email, avatar, phoneNumber, about, board, goals].every(Boolean)) {
+        //     return NextResponse.json(
+        //         {message: "no value passed"},
+        //         {error: 400})
+        // }
 
         // Check if studentId is a valid ObjectId
         if (!isValidObjectId(studentId)) {
@@ -61,8 +61,8 @@ export const PATCH = asyncHandler(async (req, { params }) => {
         if (about) {
             updateValue.about = about;
         }
-        if (boards) {
-            updateValue.boards = boards;
+        if (board) {
+            updateValue.board = board;
         }
         if (goals) {
             updateValue.goals = goals;

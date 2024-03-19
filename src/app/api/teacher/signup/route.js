@@ -12,10 +12,10 @@ connectDB();
 export const POST = asyncHandler(async (req) => {
     try {
         // Extract necessary fields from request body
-        const { firstName, lastName, username, email, phoneNumber, password } = await req.json();
+        const { firstName, lastName, username, email, phoneNumber, password, experties, timeOfExperience } = await req.json();
 
         // Check if all required fields are provided
-        if (![firstName, lastName, username, email, phoneNumber, password].every(Boolean)) {
+        if (![firstName, lastName, username, email, phoneNumber, password, experties, timeOfExperience ].every(Boolean)) {
             return NextResponse.json(
                 { error: "All fields are required" },
                 { status: 400 }
@@ -43,8 +43,12 @@ export const POST = asyncHandler(async (req) => {
             username,
             phoneNumber,
             email,
+            experienceDetails: {
+                timeOfExperience
+            },
+            experties,
             password: hashedPassword,
-            isVerified: true, // Assuming newly signed up Mentees are verified after verification from otp
+            isVerified: true, 
         });
 
         // Handle error if newTeacher creation fails

@@ -12,10 +12,10 @@ connectDB();
 export const POST = asyncHandler(async (req) => {
     try {
         // Extract necessary fields from request body
-        const { firstName, lastName, username, email, phoneNumber, password } = await req.json();
+        const { firstName, lastName, username, email, phoneNumber, password, board } = await req.json();
 
         // Check if all required fields are provided
-        if (![firstName, lastName, username, email, phoneNumber, password].every(Boolean)) {
+        if (![firstName, lastName, username, email, phoneNumber, password, board].every(Boolean)) {
             return NextResponse.json(
                 { error: "All fields are required" },
                 { status: 400 }
@@ -42,6 +42,7 @@ export const POST = asyncHandler(async (req) => {
             username,
             email,
             phoneNumber,
+            board,
             password: hashedPassword,
             isVerified: true, // Assuming newly signed up Students are verified
         });
@@ -81,6 +82,7 @@ export const POST = asyncHandler(async (req) => {
         return response;
 
     } catch (error) {
+        
         console.error("Error signing up student:", error.message);
         return NextResponse.json(
             { error: "Something went wrong while signing up student" }, 

@@ -3,16 +3,21 @@ import mongoose from 'mongoose';
 const studentSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   lastName: {
     type: String,
-    required: true
+    required: true,
+    trim: true
   },
   username: {
     type: String,
+    lowercase: true,
     required: true,
-    unique: true
+    unique: true,
+    trim: true,
+    index: true
   },
   email: {
     type: String,
@@ -26,7 +31,8 @@ const studentSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
     required: true, 
-    unique: true
+    unique: true,
+    trim:  true
   },
   avatar: {
     type: String
@@ -34,7 +40,7 @@ const studentSchema = new mongoose.Schema({
   about: {
     type: String
   },
-  boards: {
+  board: {
     type: String
   },
   feeStructure: {

@@ -48,8 +48,12 @@ const teacherSchema = new mongoose.Schema({
   verifyTokenExpiry: {
     type: Date
   },
+  isTeacher: {
+    type: Boolean,
+    default: true
+  },
   experienceDetails: {
-    yearsOfExperience: {
+    timeOfExperience: {
       type: String
     },
     achievements: [{
@@ -70,9 +74,7 @@ const teacherSchema = new mongoose.Schema({
     default: false
   },
   availability: [{
-    day: {
       type: String
-    }
   }]
 }, {timestamps: true});
 

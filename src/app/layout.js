@@ -5,6 +5,8 @@ import { Providers } from "./provider.jsx";
 import NavBar from "@/components/Navbar.jsx";
 import Footer from "@/components/Footer";
 import { usePathname } from "next/navigation";
+import { Toaster } from "react-hot-toast";
+import ReduxProvider from "./reduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,22 +17,34 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   let pathName = usePathname()
-  
+
   if (pathName.includes("/auth")) {
     pathName = true
   } else {
     pathName = false
   }
-  
+
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <Providers>
-          {!pathName && <NavBar />}
-
-          {children}
-          {!pathName && <Footer />}
-        </Providers>
+        <ReduxProvider>
+          <Providers>
+            {!pathName && <NavBar />}
+            {children}
+            {!pathName && <Footer />}
+            <Toaster position="bottom-right"
+              toastOptions={{
+                className: '',
+                style: {
+                  background: "black",
+                  border: '1px solid gray',
+                  padding: '16px',
+                  color: 'white',
+                },
+              }}
+            />
+          </Providers>
+        </ReduxProvider>
       </body>
     </html>
   );
