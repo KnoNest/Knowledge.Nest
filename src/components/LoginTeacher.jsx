@@ -71,6 +71,7 @@ const LoginTeacher = () => {
                         <Input
                             type={isVisible ? "text" : "password"}
                             onChange={handleInputChange}
+                            name= "password"
                             label='Password'
                             radius='lg'
                             variant={"bordered"}
