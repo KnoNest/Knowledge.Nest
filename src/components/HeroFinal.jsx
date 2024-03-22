@@ -1,14 +1,16 @@
 "use client"
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button } from '@nextui-org/react';
 import Slider from 'react-slick';
 import LongCard from './LongCard';
 import OurCard from './OurCard';
+import useSearchApi from '@/fetchApi/useSearchApi';
 
 const HeroFinal = () => {
-
+    const { getTutor } = useSearchApi();
+    const [data, setData] = useState([]);
     let sliderRef = useRef(null);
     let sliderRef1 = useRef(null);
 
@@ -44,38 +46,14 @@ const HeroFinal = () => {
         autoplaySpeed: 7000
     };
 
-    const data = [
-        {
-            name: "elon",
-            ceo: true,
-            company: "tesla"
-        },
-        {
-            name: "elon",
-            ceo: true,
-            company: "tesla"
-        },
-        {
-            name: "elon",
-            ceo: true,
-            company: "tesla"
-        },
-        {
-            name: "elon",
-            ceo: true,
-            company: "tesla"
-        },
-        {
-            name: "elon",
-            ceo: true,
-            company: "tesla"
-        },
-        {
-            name: "elon",
-            ceo: true,
-            company: "tesla"
-        }
-    ];
+    useEffect(() => {
+        (async () => {
+            const res = await getTutor();
+            setData(res);
+        })();
+    }, []);
+
+    
 
 
 
@@ -93,7 +71,7 @@ const HeroFinal = () => {
                 >
                     {data.map((data, index) => (
                         <div className='relative' key={index}>
-                           <OurCard />
+                           <OurCard tutor={data} />
                         </div>
                     ))}
                 </Slider>
@@ -127,7 +105,7 @@ const HeroFinal = () => {
                 >
                     {data.map((data, index) => (
                         <div key={index}>
-                            <LongCard />
+                            <LongCard tutor={data} />
 
                         </div>
 

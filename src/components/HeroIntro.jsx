@@ -3,6 +3,7 @@ import hero1img from '../../public/hero1-img.jpg'
 import hero1img1 from '../../public/hero1-img1.jpg'
 import hero1img2 from '../../public/hero1-img2.jpg'
 import Image from 'next/image'
+import Link from 'next/link'
 const HeroIntro = () => {
     return (
         <>
@@ -18,7 +19,7 @@ const HeroIntro = () => {
                                 <p className='text-white font-medium text-[1.2rem] mt-4'>Unleash your potential and explore a world of knowledge at your fingertips</p>
                             </div>
                             <div className='w-[32rem] flex justify-end items-center h-[15rem]'>
-                                <Button className='w-[10rem] h-[3rem] bg-white text-[1.3rem] font-medium'><p className='bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Explore</p></Button>
+                                <Button as={Link} href='/tutor-page' className='w-[10rem] h-[3rem] bg-white text-[1.3rem] font-medium'><p className='bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Explore</p></Button>
                             </div>
                         </div>
                         <div className='flex w-full justify-center gap-4 mt-[2rem]'>
@@ -68,7 +69,7 @@ const HeroIntro = () => {
                         <p className='text-white font-semibold text-[2.1rem]'>Struggling in any subject? Get Unstuck with Expert Tutors.</p>
                         <div className='flex gap-[10rem]'>
                             <div className='mt-8'>
-                                <Button className='py-6 px-8 text-[1rem] text-center  bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-medium '>
+                                <Button as={Link} href='/tutor-page' className='py-6 px-8 text-[1rem] text-center  bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-medium '>
                                     Find Tutor
                                 </Button>
                             </div>

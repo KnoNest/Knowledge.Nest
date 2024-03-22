@@ -24,7 +24,7 @@ export const GET = asyncHandler(async (req, { params }) => {
 
     if (!teacher && !student) {
         return NextResponse.json(
-            {error: `no user found by id ${teacherId}`})
+            {error: `no user found by id ${id}`})
     }
     const user = teacher ? teacher : student
     return NextResponse.json(user)

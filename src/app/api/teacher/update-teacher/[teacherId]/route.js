@@ -3,6 +3,7 @@ import { isValidObjectId } from "mongoose";
 import { NextResponse } from "next/server";
 import Teacher from "@/models/teacher.model.js";
 import connectDB from "@/DB_Config/connectDB.js";
+import { deleteFromCloudinary, uploadOnCloudinary } from "@/utils/cloudinary";
 
 connectDB()
 // COMPLETE SUBJECT UPDATE
@@ -22,9 +23,10 @@ export const PATCH = asyncHandler(async (req, { params }) => {
             achievements,
             capacity,
             availability,
+            languages,
+            standards
         } = await req.json();
 
-        // console.log(availability)
         // if (![firstName, lastName, username, email, avatar, phoneNumber, about, experienceDetails, experties, capacity, availability].every(Boolean)) {
         //     return NextResponse.json(
         //         {message: "no value passed"},
@@ -40,6 +42,31 @@ export const PATCH = asyncHandler(async (req, { params }) => {
 
         if (!teacher) {
             return NextResponse.json({ message: "Teacher not found" }, { status: 404 });
+        }
+
+        let avatarURL = avatar;
+        if (!avatar.includes("res.cloudinary.com")) {
+            avatarURL = await uploadOnCloudinary(avatar)
+
+            if (!avatarURL.url) {
+                return NextResponse.json({ error: "Something went wrong while uploading, please try again" },
+                    { status: 500 });
+
+            }
+            avatarURL = avatarURL.url
+            const oldAvatarURL = teacher?.avatar
+
+            if (oldAvatarURL) {
+                try {
+                    await deleteFromCloudinary(oldAvatarURL)
+
+                } catch (error) {
+                    return NextResponse.json({ error: "Something went wrong while deleting old avatar, please try again" },
+                        { status: 500 });
+
+                }
+            }
+
         }
 
         // // Update values
@@ -59,13 +86,17 @@ export const PATCH = asyncHandler(async (req, { params }) => {
 
         if (email) updateValue.email = email;
 
-        if (avatar) updateValue.avatar = avatar;
+        if (avatar) updateValue.avatar = avatarURL;
 
         if (phoneNumber) updateValue.phoneNumber = phoneNumber;
 
         if (about) updateValue.about = about;
 
         if (expertise) updateValue.experties = expertise;
+
+        if (languages) updateValue.languages = languages;
+
+        if (standards) updateValue.standards = standards;
 
         if (capacity) updateValue.capacity = capacity;
 
@@ -84,10 +115,10 @@ export const PATCH = asyncHandler(async (req, { params }) => {
             updateValue,
             { new: true }
         );
+
         if (!updatedTeacher) {
             return NextResponse.json({ error: 'Something went wrong while updating the teacher' }, { status: 500 });
         }
-
         return NextResponse.json(updatedTeacher);
     } catch (error) {
         console.error("Error updating teacher:", error.message);

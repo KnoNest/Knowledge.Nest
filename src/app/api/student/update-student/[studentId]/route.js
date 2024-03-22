@@ -3,6 +3,7 @@ import { isValidObjectId } from "mongoose";
 import { NextResponse } from "next/server";
 import Student from "@/models/student.model.js";
 import connectDB from "@/DB_Config/connectDB.js";
+import { deleteFromCloudinary, uploadOnCloudinary } from "@/utils/cloudinary";
 
 connectDB()
 // COMPLETE SUBJECT UPDATE
@@ -19,7 +20,6 @@ export const PATCH = asyncHandler(async (req, { params }) => {
             about, 
             board, 
             goals } = await req.json();
-
         // if (![firstName, lastName, username, email, avatar, phoneNumber, about, board, goals].every(Boolean)) {
         //     return NextResponse.json(
         //         {message: "no value passed"},
@@ -37,6 +37,32 @@ export const PATCH = asyncHandler(async (req, { params }) => {
         if (!student) {
             return NextResponse.json({ message: "Student not found" }, { status: 404 });
         }
+
+        let avatarURL = avatar;
+        if (!avatar.includes("res.cloudinary.com")) {
+            avatarURL = await uploadOnCloudinary(avatar)
+            if (!avatarURL.url) {
+                return NextResponse.json({ error: "Something went wrong while uploading, please try again" },
+                    { status: 500 });
+
+            }
+            avatarURL = avatarURL.url
+            
+            const oldAvatarURL = student?.avatar
+
+            if (oldAvatarURL) {
+                try {
+                    await deleteFromCloudinary(oldAvatarURL)
+
+                } catch (error) {
+                    return NextResponse.json({ error: "Something went wrong while deleting old avatar, please try again" },
+                        { status: 500 });
+
+                }
+            }
+
+        }
+
         
         let updateValue = {}
         
@@ -53,7 +79,7 @@ export const PATCH = asyncHandler(async (req, { params }) => {
             updateValue.email = email;
         }
         if (avatar) {
-            updateValue.avatar = avatar;
+            updateValue.avatar = avatarURL;
         }
         if (phoneNumber) {
             updateValue.phoneNumber = phoneNumber;
@@ -66,8 +92,9 @@ export const PATCH = asyncHandler(async (req, { params }) => {
         }
         if (goals) {
             updateValue.goals = goals;
+
         }
-        // Update the student's profile
+
         const updatedStudent = await Student.findByIdAndUpdate(
             studentId,
             updateValue,

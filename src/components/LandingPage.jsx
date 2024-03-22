@@ -2,6 +2,7 @@
 import { Button } from '@nextui-org/react'
 import React from 'react'
 import { TextGenerateEffect } from './ui/text-generate-effect.jsx'
+import Link from 'next/link.js'
 
 const LandingPage = () => {
     return (
@@ -25,7 +26,7 @@ const LandingPage = () => {
                     <div className='flex flex-col justify-center mt-[4rem] items-center'>
                         <p className='text-[2.2rem] font-bold tracking-tight dark:text-purple-700 text-[#0047FF]'>Grab your first class for free</p>
                         <div className='mt-[2rem]'>
-                            <Button className='font-semibold  text-[1.2rem] w-[12rem] mt-1 rounded-[1.1rem] h-[3rem] bg-gradient-to-r from-blue-700 to-purple-700 text-white'>Book Class</Button>
+                            <Button as={Link} href='/tutor-page' className='font-semibold  text-[1.2rem] w-[12rem] mt-1 rounded-[1.1rem] h-[3rem] bg-gradient-to-r from-blue-700 to-purple-700 text-white'>Book Class</Button>
                         </div>
                     </div>
                 </div>

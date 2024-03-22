@@ -1,7 +1,6 @@
 "use client"
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
-import heroImg1 from "../../../../../public/hero1-img2.jpg"
 import FeedBack from '@/components/FeedBack'
 import { Button, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Skeleton } from '@nextui-org/react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -14,10 +13,13 @@ import getUser from '@/fetchApi/get-user'
 import Link from 'next/link'
 import useStudentApi from '@/fetchApi/useStudentApi'
 import { useRouter } from 'next/navigation'
+import { useSelector } from 'react-redux'
+import dumbyUser from "../../../../../public/dumyUser.png"
 
 const Profile = () => {
+  const currentUser = useSelector(state => state.user.userData)
   const router = useRouter()
-  const {logout} = useStudentApi()
+  const { logout } = useStudentApi()
   const { get_user } = getUser()
   const [user, setUser] = useState(false)
   const { id } = useParams()
@@ -26,13 +28,12 @@ const Profile = () => {
     (async () => {
       const data = await get_user(id)
       setUser(data)
-      console.log(data)
     })()
   }, [])
 
   const handleLogout = async () => {
-      await logout()
-      router.push("/")
+    await logout()
+    router.push("/")
   }
 
 
@@ -47,23 +48,25 @@ const Profile = () => {
               <div className='h-[9rem] w-full flex justify-between'>
                 <div className='w-[15rem] overflow-hidden rounded-[1.5rem] relative left-[2rem] bottom-[4rem]'>
 
-                  <Image src={heroImg1} alt='' className='w-full h-full object-cover' />
+                  <Image src={user?.avatar || dumbyUser} alt='' width={240} height={135} className='w-full h-full object-cover' />
                 </div>
-                <div>
-                  <Dropdown>
-                    <DropdownTrigger>
-                      <Button  className='relative w-[1rem] text-[1.5rem] rounded-full dark:bg-black top-[2rem] text-white border-1 border-white'><PiDotsThreeBold /></Button>
+                {currentUser?._id === user?._id &&
+                  <div>
+                    <Dropdown>
+                      <DropdownTrigger>
+                        <Button className='relative w-[1rem] text-[1.5rem] rounded-full dark:bg-black top-[2rem] text-white border-1 border-white'><PiDotsThreeBold /></Button>
 
-                    </DropdownTrigger>
-                    <DropdownMenu aria-label="Static Actions">
-                      <DropdownItem as={Link} href={`/update-profile/${user?._id}`}  key="new">Update Profile</DropdownItem>
-                      <DropdownItem key="delete" className="text-danger" color="danger" onClick={handleLogout}>
-                        Logout
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
+                      </DropdownTrigger>
+                      <DropdownMenu aria-label="Static Actions">
+                        <DropdownItem as={Link} href={`/update-profile/${user?._id}`} key="new">Update Profile</DropdownItem>
+                        <DropdownItem key="delete" className="text-danger" color="danger" onClick={handleLogout}>
+                          Logout
+                        </DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
 
-                </div>
+                  </div>
+                }
               </div>
 
               <div className='relative left-[2rem] bottom-[2rem] flex flex-col gap-2'>
@@ -79,7 +82,12 @@ const Profile = () => {
                   <div>
                     <div className='flex mt-3 text-[1.1rem] gap-4 items-center'>
                       <p className='text-gray-900 dark:text-gray-200 font-medium'>Experties</p>
-                      <p className='text-[.9rem] relative'>{user?.experties}</p>
+                      <div className='flex gap-2'>
+
+                        {user?.experties.map((value, index) => (
+                          <p className='text-[.9rem] relative' key={index}>{value}</p>
+                        ))}
+                      </div>
                     </div>
                     <div className='flex my-1 text-[1.1rem] gap-4 items-center'>
                       <p className='text-gray-900 dark:text-gray-200 font-medium'>Experience</p>
@@ -88,6 +96,23 @@ const Profile = () => {
                     <div className='flex my-1 text-[1.1rem] gap-4 items-center'>
                       <p className='text-gray-900 dark:text-gray-200 font-medium'>Achivement</p>
                       <p className='text-[.9rem] relative'>{user?.experienceDetails.achievements}</p>
+                    </div>
+                    <div className='flex my-1 text-[1.1rem] gap-4 items-center'>
+                      <p className='text-gray-900 dark:text-gray-200 font-medium'>Languages</p>
+                      <div className='flex gap-2'>
+                        {user?.languages.map((value, index) => (
+                          <p className='text-[.9rem] relative' key={index}>{value}</p>
+                        ))}
+                      </div>
+                    </div>
+                    <div className='flex my-1 text-[1.1rem] gap-4 items-center'>
+                      <p className='text-gray-900 dark:text-gray-200 font-medium'>Standards</p>
+                      <div className='flex gap-2'>
+
+                        {user?.standards.map((value, index) => (
+                          <p className='text-[.9rem] relative' key={index}>{value}</p>
+                        ))}
+                      </div>
                     </div>
                   </div>
 

@@ -9,9 +9,8 @@ const sendOTP = async (email, otp) => {
             from: `Knowledge Nest <${process.env.MAIL}>`,
             to: email,
             subject: "Verifiction OTP",
-            html: `<h1>${otp, "don't worry about email, I will beautify it"}</h1>`
+            html: `<h1>${otp}</h1>`
         });
-        console.log("OTP sent to:", email);
     } catch (error) {
         console.log("Error sending OTP:", error.message);
     }
@@ -31,7 +30,6 @@ export const POST = async (req) => {
     try {
         return NextResponse.json({ message: "OTP sended", otp }, { status: 200 });
     } catch (error) {
-        console.log(error.message);
         return NextResponse.json({ message: "Something went wrong while sending OTP" }, { status: 200 });
     }
 };

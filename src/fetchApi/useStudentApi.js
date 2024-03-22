@@ -1,6 +1,9 @@
+import { setUser } from "@/redux/userSlice";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 const useStudentApi = () => {
+    const dispatch = useDispatch()
 
     const signup = async (userData) => {
         try {
@@ -56,30 +59,34 @@ const useStudentApi = () => {
                     "Content-Type": "application/json"
                 },
             });
-            localStorage.setItem("user", "")
+            // localStorage.setItem("user", "")
+            dispatch(setUser(""))
 
         } catch (error) {
             toast.error(error.message || "Failed to update");
         }
     };
-    const updateStudent = async (userData, id) => {
-
+    const updateStudent = async (userData, id, avatar) => {
+        const requestData = {
+            ...userData,
+            avatar
+        }
+        console.log()
         try {
             const res = await fetch(`/api/student/update-student/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(userData)
+                body: JSON.stringify(requestData)
             });
 
             const data = await res.json()
 
             if (data.error) {
-                toast.error(data.error || "Failed to update");
+                return toast.error(data.error || "Failed to update");
             }
-            console.log(data)
-            return data
+            dispatch(setUser(data))
         } catch (error) {
             toast.error(error.message || "Failed to update");
         }

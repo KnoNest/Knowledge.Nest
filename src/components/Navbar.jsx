@@ -3,31 +3,24 @@ import React, { useEffect, useState } from 'react'
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Input, Avatar } from "@nextui-org/react";
 import Link from 'next/link';
 import getUser from '@/fetchApi/get-user';
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
     const { updateSession } = getUser()
-    const [user, setUser] = useState()
-    let data
-
-    useEffect(() => {
-
-        try {
-            data = localStorage.getItem("user")
-            setUser(JSON.parse(data))
-        } catch (error) {
+    const currentUser = useSelector(state => state.user.userData)
     
-        }
-    },[])
+    // useEffect(() => {
+    //     if (currentUser?._id) {
+    //         setUser(true)
+    //     }else{
+    //         setUser(false)
+    //     }
+        
+    // },[currentUser])
 
     useEffect(() => {
         (async () => {
             await updateSession()
-            try {
-                const data = localStorage.getItem("user")
-                setUser(JSON.parse(data))
-            } catch (error) {
-
-            }
         })()
     }, [])
 
@@ -51,11 +44,11 @@ const NavBar = () => {
                     </NavbarContent>
                     <NavbarContent justify="end" className='flex gap-[3rem]'  >
                         <NavbarItem className="hidden lg:flex">
-                            {user
+                            {currentUser?._id
                                 ?
-                                <Link href={`/profile/user/${user?._id}`}>
+                                <Link href={`/profile/user/${currentUser?._id}`}>
 
-                                    <Avatar className='w-[2.5rem] h-[2.5rem]' />
+                                    <Avatar className='w-[2.5rem] h-[2.5rem]' src={currentUser?.avatar || ""} />
                                 </Link>
                                 :
 

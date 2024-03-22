@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from 'react';
-import { BreadcrumbItem, Breadcrumbs, Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ScrollShadow, useDisclosure } from '@nextui-org/react';
+import React, { useMemo, useState } from 'react';
+import { BreadcrumbItem, Breadcrumbs, Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Input, Modal, ModalBody, ModalContent, ModalFooter, ScrollShadow, useDisclosure } from '@nextui-org/react';
 import toast from 'react-hot-toast';
 import useTeacherApi from '@/fetchApi/useTeacherApi';
 import { useRouter } from 'next/navigation';
@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 const SignUpTeacher = () => {
     const router = useRouter()
     const {signup} = useTeacherApi()
+    const [experienceKeys, setExperienceKeys] = useState(new Set(["Select Experience"]));
     const [otpInput, setOtpInput] = useState('');
     const [otp, setOtp] = useState('');
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -26,6 +27,20 @@ const SignUpTeacher = () => {
         board: '',
         timeOfExperience: ""
     });
+
+    const selectedExperience = useMemo(
+        () => {
+            const experienceValue = Array.from(experienceKeys).join(", ").replaceAll("_", " ");
+            if (experienceValue !== "Select Experience") { 
+                setFormData(prevState => ({
+                    ...prevState,
+                    timeOfExperience: experienceValue
+                }));
+            }
+            return experienceValue;
+        },
+        [experienceKeys]
+    );
 
     const toggleVisibility = () => setIsVisible(!isVisible);
 
@@ -227,13 +242,30 @@ const SignUpTeacher = () => {
                                 ))}
                             </div>
                         </ScrollShadow>
-                        <input
-                            type='text'
-                            name='timeOfExperience'
-                            onChange={handleInputChange}
-                            placeholder='Experience time'
-                            className='py-[.8rem] px-[1rem] text-white w-full rounded-[1.1rem] outline-none bg-black'
-                        />
+                        <Dropdown>
+                                    <DropdownTrigger>
+                                        <Button
+                                            className="capitalize bg-white dark:bg-black border-1 border-gray-600 rounded-[1rem]  w-[14rem] font-medium"
+                                        >
+                                            {selectedExperience}
+                                        </Button>
+                                    </DropdownTrigger>
+                                    <DropdownMenu
+                                        aria-label="Single selection example"
+                                        variant="flat"
+                                        disallowEmptySelection
+                                        selectionMode="single"
+                                        selectedKeys={experienceKeys}
+                                        onSelectionChange={setExperienceKeys}
+                                    >
+                                        <DropdownItem key="1 Year">1 Year</DropdownItem>
+                                        <DropdownItem key="2 Year">2 Year</DropdownItem>
+                                        <DropdownItem key="3 Year">3 Year</DropdownItem>
+                                        <DropdownItem key="4 Year">4 Year</DropdownItem>
+                                        <DropdownItem key="5 Year">5 Year</DropdownItem>
+                                        <DropdownItem key="5+ Year">5+ Year</DropdownItem>
+                                    </DropdownMenu>
+                                </Dropdown>
                         <Button onClick={handleOTP} className='w-full bg-transparent text-white font-semibold border-1 border-gray-700'>
                             Departure
                         </Button>

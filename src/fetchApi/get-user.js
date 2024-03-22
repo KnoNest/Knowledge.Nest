@@ -19,8 +19,10 @@ const getUser = () => {
         localStorage.setItem(user, "")
         return
       }
-      localStorage.setItem("user", JSON.stringify(data.payload));
-      
+      // localStorage.setItem("user", JSON.stringify(data));
+      if (data?._id) {
+        dispatch(setUser(data))
+      }
       
     } catch (error) {
       console.error('Error updating session:', error);
@@ -34,7 +36,6 @@ const getUser = () => {
       if (data.error) {
        return toast.error(data.error); // Return statement removed
       }
-      dispatch(setUser(data))
       return data; 
       
     } catch (error) {

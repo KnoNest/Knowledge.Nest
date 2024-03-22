@@ -1,6 +1,9 @@
+import { setUser } from "@/redux/userSlice";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 const useTeacherApi = () => {
+    const dispatch = useDispatch()
 
     const signup = async (userData, experties ) => {
         const requestData = {
@@ -66,15 +69,17 @@ const useTeacherApi = () => {
         }
     };
 
-    const updateTeacher = async (userData, expertise, availability, achievements, id) => {
+    const updateTeacher = async (userData, expertise, availability, achievements, languages, standards, avatar, id) => {
     
         const requestData = {
             ...userData,
             expertise,
             availability,
-            achievements
+            achievements,
+            languages,
+            standards,
+            avatar
         }
-        console.log(requestData)
         try {
             const res = await fetch(`/api/teacher/update-teacher/${id}`, {
                 method: "PATCH",
@@ -89,8 +94,7 @@ const useTeacherApi = () => {
             if (data.error) {
                 toast.error(data.error || "Failed to update");
             }
-            console.log(data)
-            return data
+            dispatch(setUser(data))
         } catch (error) {
             console.error("Error signing up student:", error.message);
             toast.error(error.message || "Failed to update");

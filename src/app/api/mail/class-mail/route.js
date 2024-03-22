@@ -10,7 +10,6 @@ const sendClassEmail = async (email) => {
             subject: "class link",
             html: `<h1>${"link of class"}</h1>`
         });
-        console.log("Class link sent to:", email);
     } catch (error) {
         console.log("Error sending class link:", error.message);
     }
@@ -27,7 +26,6 @@ export const POST = async (req) => {
     try {
         return NextResponse.json({ message: "Task scheduled" }, { status: 200 });
     } catch (error) {
-        console.log(error.message);
         return NextResponse.json({ message: "Something went wrong while scheduling OTP task" }, { status: 200 });
     }
 };

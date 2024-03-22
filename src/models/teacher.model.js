@@ -60,6 +60,12 @@ const teacherSchema = new mongoose.Schema({
       type: String
     }]
   },
+  languages: [{
+    type: String
+  }],
+  standards: [{
+    type: String
+  }],
   capacity: {
     type: Number
   },
