@@ -11,6 +11,10 @@ const LoginStudent = () => {
         password: ''
     });
     const { login } = useStudentApi();
+    const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => setIsVisible(!isVisible);
+  
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -58,13 +62,23 @@ const LoginStudent = () => {
                         className='text-white'
                     />
                     <Input
-                        type='password'
+                        type={isVisible ? "text" : "password"}
                         name='password'
                         onChange={handleInputChange}
                         label='Password'
                         radius='lg'
                         variant='bordered'
                         className='text-white'
+                        endContent={
+                            <button className="focus:outline-none" type="button" onClick={toggleVisibility}>
+                              {isVisible ? (
+                                <p>hide</p>
+                              ) : (
+                                <p>show</p>
+                                
+                              )}
+                            </button>
+                          }
                     />
                     <Button onKeyDown={handleKeyPress} onClick={handleLogin} className='w-full bg-transparent text-white font-semibold border-1 border-gray-700'>
                         Login
