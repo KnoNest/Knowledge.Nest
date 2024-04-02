@@ -69,7 +69,7 @@ const HeroFinal = () => {
                     }}
                     {...setting1}
                 >
-                    {data.map((data, index) => (
+                    {data?.map((data, index) => (
                         <div className='relative' key={index}>
                            <OurCard tutor={data} />
                         </div>
