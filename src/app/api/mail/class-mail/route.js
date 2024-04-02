@@ -11,7 +11,7 @@ const sendClassEmail = async (email) => {
             html: `<h1>${"link of class"}</h1>`
         });
     } catch (error) {
-        console.log("Error sending class link:", error.message);
+        console.log("Error while sending class link:", error.message);
     }
 };
 
