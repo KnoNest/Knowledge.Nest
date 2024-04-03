@@ -5,6 +5,7 @@ import HeroTest from "@/components/HeroTest.jsx";
 import LandingPage from "@/components/LandingPage.jsx";
 import Image from "next/image";
 import WB from "../../public/WB.png"
+import Support from "@/components/Support";
 
 export default function Home() {
   return (
@@ -22,13 +23,8 @@ export default function Home() {
           <HeroFinal />
           <div className="mt-[10rem]"></div>
         </div>
-        <div className="w-full sticky bottom-[5rem] flex justify-end" >
-          <div className="relative right-5 bg-white w-[4rem] flex justify-center items-center rounded-[3rem] border-2 border-green-400 h-[3rem] duration-1000">
-            <a href={"https://wa.me/7451034603"} target="_blank">
-            <Image src={WB} width={100} height={100} className="w-[2rem] h-[2rem] hover:w-[2.2rem] hover:h-[2.2rem] duration-100" />
-
-            </a>
-          </div>
+        <div className="w-full sticky bottom-[5rem] flex justify-end">
+          <Support />
         </div>
       </div>
     </>
