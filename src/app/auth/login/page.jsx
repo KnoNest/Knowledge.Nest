@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className='w-full h-[39rem] flex-col justify-evenly items-center '>
+      <div className='w-full h-screen flex-col justify-evenly items-center '>
         <div className='w-full flex justify-center relative top-[3rem] gap-3'>
 
           <button onClick={() => setIsTeacher(prevState => !prevState)} className='bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent font-bold'>

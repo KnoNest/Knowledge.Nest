@@ -10,7 +10,7 @@ const Signup = () => {
 
   return (
     <div>
-      <div className='w-full flex-col justify-evenly h-[39rem] items-center '>
+      <div className='w-full flex-col justify-evenly h-screen items-center '>
         <div className='w-full flex justify-center relative top-[3rem]'>
 
           <button onClick={() => setIsTeacher(prevState => !prevState)} className='bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent font-bold'>

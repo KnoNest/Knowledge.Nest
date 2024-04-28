@@ -3,9 +3,8 @@ import HeroIntro from "@/components/HeroIntro";
 import HeroQuest from "@/components/HeroQuest";
 import HeroTest from "@/components/HeroTest.jsx";
 import LandingPage from "@/components/LandingPage.jsx";
-import Image from "next/image";
-import WB from "../../public/WB.png"
 import Support from "@/components/Support";
+import BoardAdvisory from "@/components/BoardAdvisory";
 
 export default function Home() {
   return (
@@ -26,6 +25,7 @@ export default function Home() {
         <div className="w-full sticky bottom-[5rem] flex justify-end">
           <Support />
         </div>
+        <BoardAdvisory />
       </div>
     </>
   );

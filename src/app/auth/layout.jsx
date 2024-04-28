@@ -10,7 +10,7 @@ export default function AuthLayout({ children }) {
     return (
       <div className="bg-black w-full">
             <div className="p-[2rem] absolute">
-              <Link href={"/"} >
+              <Link href={"/"} className="text-white">
             HOME
 
               </Link>
