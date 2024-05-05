@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import { usePathname } from "next/navigation";
 import { Toaster } from "react-hot-toast";
 import ReduxProvider from "./reduxProvider";
+import { useSelector } from "react-redux";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +18,7 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
+  
   let pathName = usePathname()
 
   if (pathName.includes("/auth")) {
@@ -25,7 +28,7 @@ export default function RootLayout({ children }) {
   }
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
           <Providers>

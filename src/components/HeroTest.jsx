@@ -6,7 +6,8 @@ export default function HeroTest() {
   return (
     <div className="rounded-md flex flex-col bg-white dark:bg-black dark:bg-grid-white/[0.05] relative overflow-hidden">
       <div className='text-center mb-[5rem]'>
-        <p className='text-[4rem] font-medium bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Testimonials</p>
+        <p className='text-[4rem] font-medium bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Reviews
+        </p>
       </div>
       <div>
         <InfiniteMovingCards
