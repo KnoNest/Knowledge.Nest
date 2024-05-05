@@ -1,6 +1,6 @@
-import ClassPrices from "@/models/classPrices.model.js";
 import { NextResponse } from "next/server";
 import connectDB from "@/DB_Config/connectDB.js";
+import ClassPrice from "@/models/classPrice.model";
 
 
 export const POST = async (req) => {
@@ -12,15 +12,13 @@ export const POST = async (req) => {
             return NextResponse.json({ error: "Invalid data format. Expected an object." }, { status: 400 });
         }
 
-        // Check if a class price record already exists
-        const classPrices = await ClassPrices.findOne();
+        const classPrices = await ClassPrice.findOne();
 
         if (classPrices) {
-            return NextResponse.json({ error: "Class price record already exists. Cannot create a new one." }, { status: 409 }); // Conflict status code
+            return NextResponse.json({ error: "Class price record already exists. Cannot create a new one." }, { status: 409 });
         }
 
-        // Create a new class price record
-        const newClassPrices = await ClassPrices.create({ data: new Map(data) });
+        const newClassPrices = await ClassPrice.create({ data: new Map(Object.entries(data)) });
 
         return NextResponse.json({ message: "Class prices created successfully", classPrices: newClassPrices }, { status: 201 });
 

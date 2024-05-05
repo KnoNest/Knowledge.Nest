@@ -1,13 +1,13 @@
-import ClassPrices from "@/models/classPrices.model.js";
 import { NextResponse } from "next/server";
 import connectDB from "@/DB_Config/connectDB.js";
+import ClassPrice from "@/models/classPrice.model";
 
 
 export const GET = async (req) => {
     connectDB();
     try {
         
-        const classPrices = await ClassPrices.find();
+        const classPrices = await ClassPrice.findOne();
 
         if (classPrices.length === 0) {
             return NextResponse.json({ message: "No class prices found" }, { status: 404 });
