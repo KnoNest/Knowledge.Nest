@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Advisory = () => {
   return (
-    <div className="w-[50rem] m-auto mt-[10rem] mb-[5rem]">
+    <div className="lg:w-[50rem] md:w-[40rem] w-[20rem] m-auto mt-[10rem] mb-[5rem]">
       <div className='flex gap-2 mb-3'>
 
         <Image src={advisory} alt="adivsory image" width={200} height={200} className='w-[4rem] h-[4rem] rounded-full' />

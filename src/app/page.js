@@ -14,19 +14,19 @@ export default function Home() {
         <LandingPage />
         <div className=" w-full flex flex-col items-center justify-center">
 
-          {/* <HeroIntro /> */}
+          <HeroIntro />
           
-          {/* <HeroQuest /> */}
+          <HeroQuest />
           <div className="m-[3rem]">
-            {/* <HeroTest /> */}
+            <HeroTest />
           </div>
           <HeroFinal />
           <div className="mt-[10rem]"></div>
         </div>
-        {/* <div className="w-full sticky bottom-[5rem] flex justify-end">
+        <div className="w-full sticky bottom-[5rem] flex justify-end">
           <Support />
-        </div> */}
-        {/* <BoardAdvisory /> */}
+        </div>
+        <BoardAdvisory />
       </div>
     </>
   );

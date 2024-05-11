@@ -44,7 +44,7 @@ const Contact = () => {
 
     return (
         <>
-            <div className='w-[30rem] m-auto flex flex-col justify-center items-center h-screen gap-5'>
+            <div className='sm:w-[30rem] w-[25rem] m-auto flex flex-col justify-center items-center h-screen gap-5'>
 
                 <h1 className='text-[1.5rem] font-bold'>Contact Us</h1>
                 <div className='w-full flex flex-col gap-5'>

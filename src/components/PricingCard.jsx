@@ -31,10 +31,10 @@ const PricingCard = () => {
     return (
         <>
             <div className=''>
-                <div className='w-[20rem] h-[23.9rem] top-[-1rem] relative border-l-1 border-gray-200 dark:text-white rounded-[1.5rem]'>
+                <div className='lg:w-[20rem] lg:flex-col sm:flex lg:h-[23.9rem] sm:h-[17rem] lg:top-[-1rem] sm:top-[2rem] top-[1rem] relative sm:border-l-1 border-gray-200 dark:text-white rounded-[1.5rem]'>
                     {/* <Tabs tabs={tabs} /> */}
                     <Tabs defaultValue="0" className="w-[25.7rem]">
-                        <TabsList className="bg-gray-100 dark:bg-gray-950  w-[77%] rounded-t-[1.5rem] h-[3rem] duration-1000">
+                        <TabsList className="bg-gray-100 dark:bg-gray-950 w-[77%] rounded-t-[1.5rem] h-[3rem] duration-1000">
                             <TabsTrigger
                                 value="0"
                                 onClick={() => handleTabClick("0")}
@@ -86,7 +86,7 @@ const PricingCard = () => {
                                 </DropdownMenu>
                             </Dropdown>
                         </div>
-                        <div className='mt-5 ml-2'>
+                        <div className='lg:mt-5 ml-2'>
 
                             <TabsContent value="0">
                                 <div className='font-medium text-[1.1rem]  relative left-3 leading-7 '>

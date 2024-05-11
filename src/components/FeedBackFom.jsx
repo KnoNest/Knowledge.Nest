@@ -44,7 +44,7 @@ const FeedBackForm = () => {
 
     return (
         <>
-            <div className='w-full flex items-center h-screen justify-evenly'>
+            <div className='w-full flex sm:flex-row flex-col items-center h-screen justify-evenly'>
                 <div className='w-[19rem]'>
                     <h1 className='text-[2rem] font-bold'>Please Provide Your Valuable Feedback. This Will Help Us Make Our Service Better</h1>
                 </div>

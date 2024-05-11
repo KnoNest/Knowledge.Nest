@@ -7,7 +7,7 @@ import Link from 'next/link'
 const BoardAdvisory = () => {
   return (
     <>
-      <div className='w-[30rem] m-auto'>
+      <div className='sm:w-[30rem] w-[20rem] m-auto'>
 
         <div className='flex gap-2 mb-3'>
 

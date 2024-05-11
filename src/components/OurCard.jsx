@@ -16,7 +16,7 @@ const OurCard = ({ tutor }) => {
                                 <p>{tutor?.lastName}</p>
                             </div>
                         </div>
-                        <div className='bg-white xl:ml-[4rem] lg:ml-[2rem] xl:mr-5 lg:mr-3 ml-[2rem]  w-[2px] h-[5rem]'></div>
+                        <div className='bg-white xl:ml-[4rem] lg:ml-[2rem] mr-[2rem] xl:mr-5 lg:mr-[2rem] ml-[2rem]  w-[2px] h-[5rem]'></div>
                         <div className='text-white text-center'>
                             <p>Classes</p>
                             <p>25</p>

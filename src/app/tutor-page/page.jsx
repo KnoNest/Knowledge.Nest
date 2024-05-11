@@ -79,16 +79,16 @@ const TutorPage = () => {
                         <div className='flex items-center'>
 
                             <input
-                                className={`w-[40rem] p-[1.5rem] rounded-[1.5rem] border-none outline-none dark:bg-black`}
+                                className={`lg:w-[40rem] md:w-[30rem] md:p-[1.5rem] p-[1rem] rounded-[1.5rem] border-none outline-none dark:bg-black`}
                                 placeholder="Search skills"
                                 type="text"
                             />
-                            <div className='relative right-[3rem] text-[1.8rem]'>
+                            <div className='relative right-[3rem] md:text-[1.8rem] text-[1.4rem]'>
                                 <FiSearch />
 
                             </div>
                         </div>
-                        <div className='flex justify-center gap-6'>
+                        <div className='flex flex-wrap justify-center gap-6'>
 
                             <Dropdown>
                                 <DropdownTrigger>

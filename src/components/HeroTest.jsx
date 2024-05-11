@@ -9,7 +9,7 @@ export default function HeroTest() {
         <p className='text-[4rem] font-medium bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Reviews
         </p>
       </div>
-      <div className="w-[22rem] sm:w-[45rem] md:w-[50rem] lg:w-full">
+      <div className="w-[19rem] sm:w-[45rem] md:w-[50rem] lg:w-full">
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
@@ -17,7 +17,7 @@ export default function HeroTest() {
           rotate={true}
         />
       </div>
-      <div className="mt-[3rem] w-[25rem] sm:w-[45rem] md:w-[50rem] lg:w-full">
+      <div className="mt-[3rem] w-[19rem] sm:w-[45rem] md:w-[50rem] lg:w-full">
         <InfiniteMovingCards
           items={testimonials}
           direction="left"

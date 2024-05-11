@@ -20,10 +20,13 @@ import {
 import Link from "next/link";
 import getUser from "@/fetchApi/get-user";
 import { useSelector } from "react-redux";
+import usePriceApi from "@/fetchApi/usePriceApi";
 
 
 const NavBar = () => {
   const { updateSession } = getUser();
+  const { getPrice } = usePriceApi()
+  const classPrice = useSelector(state => state.price.price)
   const currentUser = useSelector((state) => state.user.userData);
   const [themeMode, setThemeMode] = useState(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,6 +34,13 @@ const NavBar = () => {
     const storedTheme = JSON.parse(localStorage.getItem("theme"));
     setThemeMode(storedTheme);
   }, []);
+
+  useEffect(() => {
+    if (!classPrice._id) {
+       getPrice()
+      }
+  }, [])
+
 
   useEffect(() => {
     if (themeMode !== null) {

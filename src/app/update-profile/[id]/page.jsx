@@ -227,9 +227,9 @@ const UpdateProfile = () => {
     return (
         <>
             <div className='w-full mt-[3rem]'>
-                <div className='flex gap-[10rem] ml-[5rem]'>
-                    <div className='flex flex-col items-center gap-3'>
-                        <Avatar className='w-[7rem] h-[7rem]' src={imgUrl || user?.avatar} />
+                <div className='flex md:flex-row flex-col  lg:gap-[10rem] sm:gap-[5rem] md:ml-[5rem] ml-[3rem]'>
+                    <div className='flex flex-col items-center gap-3 relative right-7 md:right-0'>
+                        <Avatar className='md:w-[7rem] md:h-[7rem] h-[5rem] w-[5rem]' src={imgUrl || user?.avatar} />
                         <Button w="full" onClick={() => fileRef.current.click()}>Change Avatar</Button>
                         <input
                             type='file'
@@ -250,7 +250,7 @@ const UpdateProfile = () => {
                                 className='update-input'
                             />
                         </div>
-                        <div className='flex gap-5'>
+                        <div className='flex flex-col gap-5'>
                             <div className='flex flex-col gap-[1rem]'>
                                 <label>First Name</label>
                                 <input
@@ -353,7 +353,7 @@ const UpdateProfile = () => {
                                 <div>
                                     <div className='flex flex-col gap-2'>
                                         <label>Languages</label>
-                                        <div className='flex items-center gap-[1rem]'>
+                                        <div className='flex items-center sm:gap-[1rem] gap-[.5rem]'>
                                             <input
                                                 type='text'
                                                 value={languagesValue}
@@ -367,7 +367,7 @@ const UpdateProfile = () => {
                                             </Button>
                                         </div>
                                     </div>
-                                    <ScrollShadow className='w-[30rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
+                                    <ScrollShadow className='lg:w-[30rem] sm:w-[28rem] w-[22rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
                                         <div className='flex gap-2 w-full flex-wrap'>
                                             {languages?.map((item, index) => (
                                                 <div key={index} className='flex gap-2 mt-2 bg-gray-900/50 rounded-[1rem] py-[.2em] px-[.5rem]'>
@@ -385,7 +385,7 @@ const UpdateProfile = () => {
                                 <div>
                                     <div className='flex flex-col gap-2'>
                                         <label>Standards</label>
-                                        <div className='flex items-center gap-[1rem]'>
+                                        <div className='flex items-center sm:gap-[1rem] gap-[.5rem]'>
                                             <input
                                                 type='text'
                                                 value={standardsValue}
@@ -399,7 +399,7 @@ const UpdateProfile = () => {
                                             </Button>
                                         </div>
                                     </div>
-                                    <ScrollShadow className='w-[30rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
+                                    <ScrollShadow className='lg:w-[30rem] sm:w-[28rem] w-[22rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
                                         <div className='flex gap-2 w-full flex-wrap'>
                                             {standards?.map((item, index) => (
                                                 <div key={index} className='flex gap-2 mt-2 bg-gray-900/50 rounded-[1rem] py-[.2em] px-[.5rem]'>
@@ -417,7 +417,7 @@ const UpdateProfile = () => {
                                 <div>
                                     <div className='flex flex-col gap-2'>
                                         <label>Achievements</label>
-                                        <div className='flex items-center gap-[1rem]'>
+                                        <div className='flex items-center sm:gap-[1rem] gap-[.5rem]'>
                                             <input
                                                 type='text'
                                                 value={achievementsValue}
@@ -431,7 +431,7 @@ const UpdateProfile = () => {
                                             </Button>
                                         </div>
                                     </div>
-                                    <ScrollShadow className='w-[30rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
+                                    <ScrollShadow className='lg:w-[30rem] sm:w-[28rem] w-[22rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
                                         <div className='flex gap-2 w-full flex-wrap'>
                                             {achievements?.map((item, index) => (
                                                 <div key={index} className='flex gap-2 mt-2 bg-gray-900/50 rounded-[1rem] py-[.2em] px-[.5rem]'>
@@ -449,7 +449,7 @@ const UpdateProfile = () => {
                                 <div>
                                     <div className='flex flex-col gap-2'>
                                         <label>Availability Days</label>
-                                        <div className='flex items-center gap-[1rem]'>
+                                        <div className='flex items-center sm:gap-[1rem] gap-[.5rem]'>
                                             <input
                                                 type='text'
                                                 value={availabilityValue}
@@ -463,7 +463,7 @@ const UpdateProfile = () => {
                                             </Button>
                                         </div>
                                     </div>
-                                    <ScrollShadow className='w-[30rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
+                                    <ScrollShadow className='lg:w-[30rem] sm:w-[28rem] w-[22rem] h-[6rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
                                         <div className='flex gap-2 w-full flex-wrap'>
                                             {availability?.map((item, index) => (
                                                 <div key={index} className='flex gap-2 mt-2 bg-gray-900/50 rounded-[1rem] py-[.2em] px-[.5rem]'>
@@ -481,7 +481,7 @@ const UpdateProfile = () => {
                                 <div>
                                     <div className='flex flex-col gap-2'>
                                         <label>Expertise</label>
-                                        <div className='flex items-center gap-[1rem]'>
+                                        <div className='flex items-center sm:gap-[1rem] gap-[.5rem]'>
                                             <input
                                                 type='text'
                                                 value={expertiseValue}
@@ -495,7 +495,7 @@ const UpdateProfile = () => {
                                             </Button>
                                         </div>
                                     </div>
-                                    <ScrollShadow className='w-[30rem] h-[8rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
+                                    <ScrollShadow className='lg:w-[30rem] sm:w-[28rem] w-[22rem] h-[8rem] bg-black rounded-[.7rem] mt-[1rem] border-1 border-white'>
                                         <div className='flex gap-2 w-full flex-wrap'>
                                             {expertise?.map((item, index) => (
                                                 <div key={index} className='flex gap-2 mt-2 bg-gray-900/50 rounded-[1rem] py-[.2em] px-[.5rem]'>
@@ -542,7 +542,7 @@ const UpdateProfile = () => {
                                 value={formData.about}
                                 onChange={handleInputChange}
                                 placeholder='Write about yourself...'
-                                className='py-[.5rem] px-[.7rem] w-[30rem] h-[10rem] rounded-[.5rem] outline-none border-1 border-white bg-black text-white text-[.8rem]'
+                                className='py-[.5rem] px-[.7rem] lg:w-[30rem] sm:w-[28rem] w-[22rem] h-[10rem] rounded-[.5rem] outline-none border-1 border-white bg-black text-white text-[.8rem]'
                             />
                         </div>
 

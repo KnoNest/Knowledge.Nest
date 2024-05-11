@@ -44,19 +44,19 @@ const Profile = () => {
 
   return (
     <>
-      <div className='w-[75%] mt-[8rem] ml-[5rem] mb-[8rem] flex gap-[6rem]'>
+      <div className='lg:w-[70rem] m-auto md:w-[44rem] w-[26rem] mt-[8rem] lg:ml-[5rem] md:ml-[3rem] mb-[8rem] flex md:flex-col lg:flex-row gap-[6rem]'>
         <div>
-          <div className='h-[12rem] w-[44rem] rounded-[1.1rem] bg-gradient-to-br from-violet-800 to-violet-500 '></div>
+          <div className='md:h-[12rem] h-[7rem] md:w-[44rem] w-[25rem] rounded-[1.1rem] bg-gradient-to-br from-violet-800 to-violet-500 '></div>
           {user ?
 
-            <div>
-              <div className='h-[9rem] w-full flex justify-between'>
-                <div className='w-[15rem] overflow-hidden rounded-[1.5rem] relative left-[2rem] bottom-[4rem]'>
+            <div className='md:w-[38rem] w-[22rem]'>
+              <div className='md:h-[9rem] h-[6rem] flex justify-between'>
+                <div className='md:w-[15rem]  w-[10rem]  overflow-hidden rounded-[1.5rem] relative left-[2rem] bottom-[4rem]'>
 
-                  <Image src={user?.avatar || dumbyUser} alt='' width={240} height={135} className='w-full h-full object-cover' />
+                  <Image src={user?.avatar || dumbyUser} alt='' width={240} height={135} className='w-full h-full  object-cover' />
                 </div>
                 {currentUser?._id === user?._id &&
-                  <div>
+                  <div className=''>
                     <Dropdown>
                       <DropdownTrigger>
                         <Button className='relative w-[1rem] text-[1.5rem] rounded-full dark:bg-black top-[2rem] text-white border-1 border-white'><PiDotsThreeBold /></Button>
@@ -84,7 +84,7 @@ const Profile = () => {
                 {user?.isTeacher
                   ?
 
-                  <div>
+                  <div className='w-[24rem]'>
                     <div className='flex mt-3 text-[1.1rem] gap-4 items-center'>
                       <p className='text-gray-900 dark:text-gray-200 font-medium'>Experties</p>
                       <div className='flex gap-2'>
@@ -136,13 +136,19 @@ const Profile = () => {
 
                 }
                 <div className='mt-5 text-[1.1rem]'>
-                  <Divider />
+                  {/* <Divider /> */}
                   <p className='font-semibold text-[1.5rem]'>About</p>
                   <p className='w-[35rem] font-medium leading-7 overflow-hidden'>{user?.about}
                   </p>
                 </div>
               </div>
-              <div className='mt-[5rem] relative left-[2rem]'>
+              {user?.isTeacher &&
+                <div className='mt-[1rem] lg:hidden'>
+
+                  <PricingCard />
+                </div>
+              }
+              <div className='mt-[5rem] relative lg:left-[2rem]'>
                 <div className='my-[4rem]'>
                   <h2 className='font-bold text-[2rem] bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent '>FeedBack</h2>
                 </div>
@@ -152,7 +158,7 @@ const Profile = () => {
 
             :
 
-            <div>
+            <div className='w-[22rem]'>
               <div className='h-[9rem] w-[15rem] rounded-[1.5rem] overflow-hidden relative left-[2rem] bottom-[4rem]'>
                 <Skeleton className="rounded-lg w-[15rem]">
                   <div className="h-[18rem] rounded-lg bg-default-300"></div>
@@ -181,13 +187,13 @@ const Profile = () => {
                     </Skeleton>
                   </div>
                   <div className='mt-[3rem] text-[1.1rem] flex flex-col gap-4'>
-                    <Skeleton className="w-[30rem] rounded-lg">
+                    <Skeleton className="md:w-[30rem] w-[25rem] rounded-lg">
                       <div className="h-3  rounded-lg bg-default-300"></div>
                     </Skeleton>
-                    <Skeleton className="w-[28rem] rounded-lg">
+                    <Skeleton className="md:w-[28rem] w-[23rem] rounded-lg">
                       <div className="h-3  rounded-lg bg-default-300"></div>
                     </Skeleton>
-                    <Skeleton className="w-[26rem] rounded-lg">
+                    <Skeleton className="md:w-[26rem] w-[22rem] rounded-lg">
                       <div className="h-3  rounded-lg bg-default-300"></div>
                     </Skeleton>
                   </div>
@@ -197,7 +203,7 @@ const Profile = () => {
                 <div className='my-[4rem]'>
                   <h2 className='font-bold text-[2rem] bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent '>FeedBack</h2>
                 </div>
-                <Skeleton className="rounded-lg w-[44rem]">
+                <Skeleton className="rounded-lg  md:w-[44rem] w-[24rem]">
                   <div className="h-[12rem] rounded-lg bg-default-300"></div>
                 </Skeleton>
               </div>
@@ -206,7 +212,7 @@ const Profile = () => {
 
         </div>
         {user?.isTeacher &&
-          <div className='mt-[1rem]'>
+          <div className='mt-[1rem] hidden lg:flex'>
 
             <PricingCard />
           </div>

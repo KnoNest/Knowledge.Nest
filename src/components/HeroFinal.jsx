@@ -11,18 +11,26 @@ import useSearchApi from '@/fetchApi/useSearchApi';
 const HeroFinal = () => {
     const { getTutor } = useSearchApi();
     const [data, setData] = useState([]);
-    const [screenWidth, setScreenWidth] = useState(window.innerWidth); // State to track screen width
+    const [screenWidth, setScreenWidth] = useState(0);
     let sliderRef = useRef(null);
     let sliderRef1 = useRef(null);
 
-    const updateScreenWidth = () => {
-        setScreenWidth(window.innerWidth);
-    };
-
     useEffect(() => {
-        window.addEventListener('resize', updateScreenWidth); // Add event listener for screen resize
+        const updateScreenWidth = () => {
+            if (typeof window !== 'undefined') {
+                setScreenWidth(window.innerWidth);
+            }
+        };
+
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', updateScreenWidth); 
+            setScreenWidth(window.innerWidth);
+        }
+
         return () => {
-            window.removeEventListener('resize', updateScreenWidth); // Cleanup on component unmount
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', updateScreenWidth); 
+            }
         };
     }, []);
 
@@ -46,8 +54,16 @@ const HeroFinal = () => {
     const setting1 = {
         infinite: true,
         speed: 500,
-        slidesToShow: screenWidth >= 768 ? 2 : 3, // Change here based on screen width
+        slidesToShow: screenWidth <= 1024 ? 2 : 3,
         slidesToScroll: 2,
+        autoplay: true,
+        autoplaySpeed: 5000
+    };
+    const smSetting1 = {
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 5000
     };
@@ -69,7 +85,7 @@ const HeroFinal = () => {
     }, []);
 
     return (
-        <div className='w-[86%] m-auto'>
+        <div className='md:w-[86%] w-[77%] m-auto'>
             <div className='w-full flex justify-center mb-[4rem]'>
                 <p className='text-[4rem] font-medium bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Grab Your First Free class</p>
             </div>
@@ -78,7 +94,7 @@ const HeroFinal = () => {
                     ref={slider => {
                         sliderRef = slider;
                     }}
-                    {...setting1}
+                    {...(screenWidth < 640 ? smSetting1 : setting1)}
                 >
                     {data?.map((data, index) => (
                         <div className='relative' key={index}>
@@ -97,7 +113,7 @@ const HeroFinal = () => {
                 </Button>
             </div>
 
-            <div className='w-full m-auto'>
+            <div className='w-full m-auto '>
 
                 <div className="text-center my-[3rem] flex gap-[9rem] justify-center">
                     <Button className="button" onClick={previous1}>
