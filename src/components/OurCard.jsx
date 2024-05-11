@@ -6,7 +6,7 @@ const OurCard = ({ tutor }) => {
     return (
         <>
 
-                <div className='w-[23rem] h-[27rem] rounded-[1.5rem] bg-black border-2 dark:border-gray-800'>
+                <div className='xl:w-[23rem] h-[27rem] lg:w-[20rem] rounded-[1.5rem] bg-black border-2 dark:border-gray-800'>
                     <div className='flex relative top-3 left-5'>
                         <Avatar src={tutor?.avatar} alt='' as={Link} href={`/profile/user/${tutor?._id}`} className='w-[4rem] h-[4rem]' />
                         <div className='flex flex-col gap-1 ml-1 mt-1 text-white'>
@@ -16,9 +16,9 @@ const OurCard = ({ tutor }) => {
                                 <p>{tutor?.lastName}</p>
                             </div>
                         </div>
-                        <div className='bg-white ml-[4rem] mr-6 w-[2px] h-[5rem]'></div>
+                        <div className='bg-white xl:ml-[4rem] lg:ml-[2rem] xl:mr-5 lg:mr-3 ml-[2rem]  w-[2px] h-[5rem]'></div>
                         <div className='text-white text-center'>
-                            <p>Classes done</p>
+                            <p>Classes</p>
                             <p>25</p>
                         </div>
                     </div>

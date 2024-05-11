@@ -10,11 +10,11 @@ const HeroQuest = () => {
                 <div className='text-center'>
                     <p className='text-[4rem] font-medium bg-gradient-to-r from-indigo-700 to-purple-700 bg-clip-text text-transparent'>Testimonials</p>
                 </div>
-                <div className='grid grid-cols-2 mt-[4rem] gap-6'>
-                    <div className='w-[33rem] h-[22rem] border-1 border-gray-300 rounded-[1.5rem]'>
+                <div className='sm:grid sm:grid-cols-2 flex flex-col items-center mt-[4rem] lg:gap-6 sm:gap-4'>
+                    <div className='hidden sm:block lg:w-[33rem] lg:h-[22rem] md:w-[23rem] md:h-[18rem] border-1 border-gray-300 rounded-[1.5rem]'>
                         <div className='relative top-6 opacity-75 w-[90%] m-auto'>
-                            <p className='font-mdium text-[1.3rem]'>The platform allowed me to find a teacher who specializes in my board. The flexibility to choose based on subject and teaching style made it super easy. My chemistry grades have improved, and I'm more confident.</p>
-                            <div className='mt-[3rem] flex items-center gap-2'>
+                            <p className='font-mdium lg:text-[1.3rem] md:text-[1.1rem]'>The platform allowed me to find a teacher who specializes in my board. The flexibility to choose based on subject and teaching style made it super easy. My chemistry grades have improved, and I'm more confident.</p>
+                            <div className='lg:mt-[3rem] sm:mt-[2rem] flex items-center gap-2'>
                                 <Avatar src='' className='w-[3rem] h-[3rem]' />
                                 {/* <div className='ml-[1rem] text-[1.2rem] font-medium'> */}
                                     {/* <p>manu_</p> */}
@@ -24,16 +24,16 @@ const HeroQuest = () => {
 
                         </div>
                     </div>
-                    <div className='ml-[4rem] mt-[3rem]'>
+                    <div className='sm:ml-[1rem] lg:ml-[3rem] sm:mt-[2rem] md:mt-[3rem]'>
                         <CardStack items={CARDS} />
                     </div>
-                    <div className='ml-[4rem] mt-[3rem]'>
+                    <div className='sm:ml-[2rem] mt-[3rem]'>
                         <CardStack items={CARD1} />
                     </div>
-                    <div className='w-[33rem] h-[22rem] border-1 border-gray-300 rounded-[1.5rem]'>
+                    <div className='hidden sm:block lg:w-[33rem] lg:h-[22rem] md:w-[23rem] sm:relative sm:top-[4rem]  md:h-[18rem] border-1 border-gray-300 rounded-[1.5rem]'>
                         <div className='relative top-6 opacity-75 w-[90%] m-auto'>
-                            <p className='font-mdium text-[1.3rem]'>I struggled to find a qualified tutor for my child, but this platform connected us with a fantastic English teacher who really understands the curriculum. My child's reading and writing skills have improved dramatically.</p>
-                            <div className='mt-[3rem] flex items-center gap-2'>
+                            <p className='font-mdium lg:text-[1.3rem] md:text-[1.1rem]'>I struggled to find a qualified tutor for my child, but this platform connected us with a fantastic English teacher who really understands the curriculum. My child's reading and writing skills have improved dramatically.</p>
+                            <div className='lg:mt-[3rem] sm:mt-[2rem] flex items-center gap-2'>
                                 <Avatar src='' className='w-[3rem] h-[3rem]' />
                                 {/* <div className='ml-[1rem] text-[1.2rem] font-medium'> */}
                                     {/* <p>username</p> */}

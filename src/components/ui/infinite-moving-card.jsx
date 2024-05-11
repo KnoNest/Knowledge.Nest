@@ -78,7 +78,7 @@ export const InfiniteMovingCards = ({
         )}
       >
         {items.map((item, idx) => (
-          <div key={item.name} className={`w-[25rem] h-[18rem] border-2 border-slate-300 rounded-[1.2rem]`}
+          <div key={item.name} className={`w-[18rem] h-[23rem] sm:w-[25rem] sm:h-[18rem] border-2 border-slate-300 rounded-[1.2rem]`}
           >
 
             <div className=" relative top-6 left-4 w-[90%] flex flex-col" >
@@ -93,8 +93,8 @@ export const InfiniteMovingCards = ({
                 {item.quote}
 
               </div>
-              <div className='flex absolute top-[12rem] w-full'>
-                <div className='mr-[.5rem] relative bottom-1 flex gap-[10rem] justify-center items-center text-[1.1rem] '>
+              <div className='flex absolute sm:top-[12rem] top-[16rem] w-full'>
+                <div className='mr-[.5rem] relative bottom-1 flex sm:gap-[10rem] gap-5 justify-center items-center text-[1.1rem] '>
                   <p className="font-semibold">TUTOR</p>
                   <div>
                     <p>username</p>

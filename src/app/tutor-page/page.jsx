@@ -6,8 +6,12 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@
 import LongCard from '@/components/LongCard.jsx';
 import { Card, Skeleton } from "@nextui-org/react";
 import useSearchApi from '@/fetchApi/useSearchApi';
+import { useSelector } from 'react-redux';
+import usePriceApi from '@/fetchApi/usePriceApi';
 
 const TutorPage = () => {
+    const classPrice = useSelector(state => state.price.price)
+    const { getPrice } = usePriceApi()
     const { searchTutor, getTutor } = useSearchApi();
     const [subjectKeys, setSubjectKeys] = useState(new Set(["Subject"]));
     const [gradeKeys, setGradeKeys] = useState(new Set(["Grade"]));
@@ -15,6 +19,12 @@ const TutorPage = () => {
     const [languageKeys, setLanguageKeys] = useState(new Set(["Language"]));
     const [data, setData] = useState([]);
 
+    useEffect(() => {
+          if (!classPrice._id) {
+             getPrice()
+            }
+        }, [])
+    
     const selectedSubject = useMemo(
         () => Array.from(subjectKeys).join(", ").replaceAll("_", " "),
         [subjectKeys]

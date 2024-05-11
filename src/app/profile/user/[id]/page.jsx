@@ -3,10 +3,6 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import FeedBack from '@/components/FeedBack'
 import { Button, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Skeleton } from '@nextui-org/react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { IoCallOutline } from "react-icons/io5";
-import { MdLiveTv } from "react-icons/md";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { PiDotsThreeBold } from "react-icons/pi";
 import { useParams } from 'next/navigation'
 import getUser from '@/fetchApi/get-user'
@@ -15,19 +11,28 @@ import useStudentApi from '@/fetchApi/useStudentApi'
 import { useRouter } from 'next/navigation'
 import { useSelector } from 'react-redux'
 import dumbyUser from "../../../../../public/dumyUser.png"
+import usePriceApi from '@/fetchApi/usePriceApi'
+import PricingCard from '@/components/PricingCard'
 
 const Profile = () => {
   const currentUser = useSelector(state => state.user.userData)
+  const classPrice = useSelector(state => state.price.price)
   const router = useRouter()
   const { logout } = useStudentApi()
+  const { getPrice } = usePriceApi()
   const { get_user } = getUser()
   const [user, setUser] = useState(false)
   const { id } = useParams()
+
 
   useEffect(() => {
     (async () => {
       const data = await get_user(id)
       setUser(data)
+      if (!classPrice._id) {
+        await getPrice()
+      }
+
     })()
   }, [])
 
@@ -202,106 +207,8 @@ const Profile = () => {
         </div>
         {user?.isTeacher &&
           <div className='mt-[1rem]'>
-            <div className='w-[20rem] h-[23.9rem] top-[-1rem] relative border-l-1 border-gray-200 dark:text-white rounded-[1.5rem]'>
-              {/* <Tabs tabs={tabs} /> */}
-              <Tabs defaultValue="1M" className="w-[25.7rem]">
-                <TabsList className="bg-gray-100 dark:bg-gray-700 w-[77%] rounded-t-[1.5rem] h-[3rem] duration-1000">
-                  <TabsTrigger value="1M" className="font-semibold h-[95%] rounded-[1rem] w-full text-[1rem]">1 Month</TabsTrigger>
-                  <TabsTrigger value="2M" className="font-semibold h-[95%] rounded-[1rem] w-full text-[1rem]">2 Month</TabsTrigger>
-                  <TabsTrigger value="3M" className="font-semibold h-[95%] rounded-[1rem] w-full text-[1rem]">3 Month</TabsTrigger>
-                </TabsList>
-                <div className='mt-5 ml-2'>
 
-                  <TabsContent value="1M">
-                    <div className='font-medium text-[1.1rem]  relative left-3 leading-7 '>
-                      <div className='flex gap-3'>
-                        <MdLiveTv />
-                        <p className='relative top-[-5px]'>
-                          weekly classes lorem 2
-                        </p>
-                      </div>
-                      <div className='flex gap-3'>
-                        <IoCallOutline />
-                        <p className='relative top-[-5px]'>doubt calls</p>
-                      </div>
-                      <div className='flex gap-3'>
-                        <IoChatbubbleEllipsesOutline />
-                        <p className='relative top-[-5px]'>etc</p>
-                      </div>
-                      <div className='flex gap-4 mt-4'>
-                        {/* <p className='font-bold text-[1.4rem] text-blue-600 '>USD</p> */}
-                        <p className='font-bold text-[1.4rem] relative bottom-[1px]'>
-                          299 $
-                        </p>
-                      </div>
-
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="2M">
-                    <div className='font-medium text-[1.1rem] relative left-3 leading-7 '>
-                      <div className='flex gap-3'>
-                        <MdLiveTv />
-                        <p className='relative top-[-5px]'>
-                          weekly classes lorem 2
-                        </p>
-                      </div>
-                      <div className='flex gap-3'>
-                        <IoCallOutline />
-                        <p className='relative top-[-5px]'>doubt calls</p>
-                      </div>
-                      <div className='flex gap-3'>
-                        <IoChatbubbleEllipsesOutline />
-                        <p className='relative top-[-5px]'>etc</p>
-                      </div>
-                      <div className='flex gap-4 mt-4'>
-                        {/* <p className='font-bold text-[1.4rem] text-blue-600 '>USD</p> */}
-                        <p className='font-bold text-[1.4rem] relative bottom-[1px]'>
-                          599 $
-                        </p>
-                      </div>
-
-                    </div>
-
-                  </TabsContent>
-                  <TabsContent value="3M">
-                    <div className='font-medium text-[1.1rem]  relative left-3 leading-7 '>
-                      <div className='flex gap-3'>
-                        <MdLiveTv />
-                        <p className='relative top-[-5px]'>
-                          weekly classes lorem 2
-                        </p>
-                      </div>
-                      <div className='flex gap-3'>
-                        <IoCallOutline />
-                        <p className='relative top-[-5px]'>doubt calls</p>
-                      </div>
-                      <div className='flex gap-3'>
-                        <IoChatbubbleEllipsesOutline />
-                        <p className='relative top-[-5px]'>etc</p>
-                      </div>
-                      <div className='flex gap-4 mt-4'>
-                        {/* <p className='font-bold text-[1.4rem] text-blue-600 '>USD</p> */}
-                        <p className='font-bold text-[1.4rem] relative bottom-[1px]'>
-                          799 $
-                        </p>
-                      </div>
-
-                    </div>
-
-
-                  </TabsContent>
-                </div>
-              </Tabs>
-              <div className='mt-[2rem] ml-4'>
-                <Button className='px-[1.8rem] py-[1.5rem] bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-medium'>Book Class</Button>
-                <div className='absolute h-[2px] w-[97%] rotate-[-29deg] top-[18rem] right-1 bg-black dark:bg-white'></div>
-                <div className='mt-[3rem] w-[95%] flex justify-end'>
-
-                  <Button className='px-[2.5rem] py-[1.5rem] bg-gradient-to-r from-indigo-700 to-purple-700 text-white font-medium'> Profile</Button>
-                </div>
-              </div>
-
-            </div>
+            <PricingCard />
           </div>
         }
 
