@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
           <Providers>
             {!pathName && <NavBar />}
             {children}
-            {!pathName && <Footer />}
+            {/* {!pathName && <Footer />} */}
             <Toaster position="bottom-right"
               toastOptions={{
                 className: '',

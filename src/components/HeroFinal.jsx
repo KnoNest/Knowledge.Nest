@@ -11,12 +11,25 @@ import useSearchApi from '@/fetchApi/useSearchApi';
 const HeroFinal = () => {
     const { getTutor } = useSearchApi();
     const [data, setData] = useState([]);
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth); // State to track screen width
     let sliderRef = useRef(null);
     let sliderRef1 = useRef(null);
+
+    const updateScreenWidth = () => {
+        setScreenWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+        window.addEventListener('resize', updateScreenWidth); // Add event listener for screen resize
+        return () => {
+            window.removeEventListener('resize', updateScreenWidth); // Cleanup on component unmount
+        };
+    }, []);
 
     const next = () => {
         sliderRef.slickNext();
     };
+
     const previous = () => {
         sliderRef.slickPrev();
     };
@@ -24,14 +37,16 @@ const HeroFinal = () => {
     const next1 = () => {
         sliderRef1.slickNext();
     };
+
     const previous1 = () => {
         sliderRef1.slickPrev();
     };
 
+    // Adjusting slidesToShow based on screen width
     const setting1 = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: screenWidth >= 768 ? 2 : 3, // Change here based on screen width
         slidesToScroll: 2,
         autoplay: true,
         autoplaySpeed: 5000
@@ -53,10 +68,6 @@ const HeroFinal = () => {
         })();
     }, []);
 
-    
-
-
-
     return (
         <div className='w-[86%] m-auto'>
             <div className='w-full flex justify-center mb-[4rem]'>
@@ -71,7 +82,7 @@ const HeroFinal = () => {
                 >
                     {data?.map((data, index) => (
                         <div className='relative' key={index}>
-                           <OurCard tutor={data} />
+                           <OurCard tutor={data} className="mx-2" />
                         </div>
                     ))}
                 </Slider>
@@ -106,17 +117,12 @@ const HeroFinal = () => {
                     {data.map((data, index) => (
                         <div key={index}>
                             <LongCard tutor={data} />
-
                         </div>
-
                     ))}
                 </Slider>
             </div>
-
         </div>
     );
-}
+};
 
 export default HeroFinal;
-
-
