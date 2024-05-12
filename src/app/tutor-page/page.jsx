@@ -193,7 +193,7 @@ const TutorPage = () => {
                     </div>
                 </div>
 
-                <div className='w-[85%] m-auto mt-[5rem] mb-[8rem]'>
+                <div className='lg:w-[70rem] md:w-[50rem] w-[22rem] m-auto mt-[5rem] mb-[8rem]'>
                     {data.length > 0 ?
                         <div>
                             {data.map((data, index) => (

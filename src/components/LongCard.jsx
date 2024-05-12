@@ -17,7 +17,7 @@ const LongCard = ({ className, tutor }) => {
                                 <Image src={tutor?.avatar || dumbyUser} alt='' loading='lazy' width={352} height={352} className="rounded-full lg:w-[9rem] lg:h-[9rem] sm:w-[7rem] sm:h-[7rem] w-[4rem] h-[4rem] object-cover" />
                             </Link>
                         </div>
-                        <div className='ml-[2rem] w-[25rem]'>
+                        <div className='ml-[2rem] md:w-[25rem] w-[20rem] '>
                             <div className='text-gray-700 dark:text-white'>
                                 <p className='font-semibold md:text-[2rem] text-[1.5rem]'>{tutor?.username}</p>
                                 <div className='flex mt-3 items-center md:text-[1.3rem] md:gap-4 gap-2 text-center'>
@@ -43,7 +43,7 @@ const LongCard = ({ className, tutor }) => {
                                 </div>
                             </div>
                         </div>
-                    <div>
+                    <div className='relative left-3 md:left-0'>
                         <PricingCard />
                     </div>
                 </div>

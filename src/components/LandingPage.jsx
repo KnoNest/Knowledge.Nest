@@ -7,7 +7,7 @@ import Link from 'next/link.js'
 const LandingPage = () => {
     return (
         <>
-            <div className="w-[26.6rem] sm:w-full lg:w-[73rem] xl:w-[83rem] lg:m-auto h-[48rem] rounded-[33px] flex flex-col  items-center bg-gradient-to-br from-purple-300 to-blue-200 dark:from-black dark:to-black border-b-1 dark:border-white">
+            <div className="m-auto w-[25rem] sm:w-full lg:w-[73rem] xl:w-[83rem] lg:m-auto h-[48rem] rounded-[33px] flex flex-col  items-center bg-gradient-to-br from-purple-300 to-blue-200 dark:from-black dark:to-black border-b-1 dark:border-white">
                 <div className='mt-[5rem]'>
                     <div className='text-center'>
 

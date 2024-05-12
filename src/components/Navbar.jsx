@@ -121,12 +121,12 @@ const NavBar = () => {
                 </Button>
               )}
             </NavbarItem>
-            <NavbarItem className="hidden lg:visible">
+            <NavbarItem className="hidden lg:block">
               <Button as={Link} className='bg-black text-white w-[2rem] md:w-[9rem] text-[.7rem] h-[2rem] md:text-[.9rem] md:h-[2.5rem]' href="/tutor-page">
                 Find Tutor
               </Button>
             </NavbarItem>
-            <NavbarItem >
+            <NavbarItem className=" lg:hidden" >
               <Dropdown>
                 <DropdownTrigger>
                   <Button
